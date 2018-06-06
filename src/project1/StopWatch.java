@@ -62,7 +62,7 @@ public class StopWatch {
      *
      * @param milliseconds milliseconds to be added to the stop watch
      *****************************************************************/
-    public StopWatch(int milliseconds) {
+    public StopWatch(int milliseconds) throws SWIllegalArgumentException{
 
         //if parameter is within the appropriate range
         if (milliseconds >= 0 && milliseconds < 1000) {
@@ -72,7 +72,7 @@ public class StopWatch {
         } else {
 
             //if parameter is not in range throw an exception
-            throw new IllegalArgumentException();
+            throw new SWIllegalArgumentException();
         }
     }
 
@@ -82,7 +82,7 @@ public class StopWatch {
      * @param seconds seconds to be added to the stop watch
      * @param milliseconds milliseconds to be added to the stop watch
      *****************************************************************/
-    public StopWatch(int seconds, int milliseconds) {
+    public StopWatch(int seconds, int milliseconds) throws SWIllegalArgumentException{
 
         //if parameters are within the appropriate range
         if (seconds >= 0 && seconds < 60 && milliseconds >= 0 && milliseconds < 1000) {
@@ -94,7 +94,7 @@ public class StopWatch {
         } else {
 
             //if parameter is not in range throw an exception
-            throw new IllegalArgumentException();
+            throw new SWIllegalArgumentException();
         }
     }
 
@@ -105,7 +105,7 @@ public class StopWatch {
      * @param seconds seconds to be added to the stop watch
      * @param milliseconds milliseconds to be added to the stop watch
      *****************************************************************/
-    public StopWatch(int minutes, int seconds, int milliseconds) {
+    public StopWatch(int minutes, int seconds, int milliseconds) throws SWIllegalArgumentException{
 
         //if parameters are within the appropriate range
         if (minutes >= 0 && seconds >= 0 && seconds < 60 && milliseconds >= 0 && milliseconds < 1000) {
@@ -118,7 +118,7 @@ public class StopWatch {
         } else {
 
             //if parameter is not in range throw an exception
-            throw new IllegalArgumentException();
+            throw new SWIllegalArgumentException();
         }
     }
 
@@ -127,7 +127,7 @@ public class StopWatch {
      *
      * @param startTime String of time to be added to stop watch
      *****************************************************************/
-    public StopWatch(String startTime) {
+    public StopWatch(String startTime) throws SWIllegalArgumentException{
 
         //local variables
         int min = 0;
@@ -137,7 +137,7 @@ public class StopWatch {
         //check that the last character in the string is a digit to avoid errors, or throw an error
         char temp = startTime.charAt(startTime.length() - 1);
         if(!Character.isDigit(temp)){
-            throw new IllegalArgumentException();
+            throw new SWIllegalArgumentException();
         }
 
         // a try block to make sure nothing goes wrong
@@ -151,7 +151,7 @@ public class StopWatch {
 
                 //if any of those elements is null, throw an exception
                 if (s[0] == null || s[1] == null || s[2] == null) {
-                    throw new IllegalArgumentException();
+                    throw new SWIllegalArgumentException();
                 }
 
                 //assign the elements of the array to the variables accordingly
@@ -165,7 +165,7 @@ public class StopWatch {
 
                 //if any of those elements is null, throw an exception
                 if (s[0] == null || s[1] == null) {
-                    throw new IllegalArgumentException();
+                    throw new SWIllegalArgumentException();
                 }
 
                 //assign the elements of the array to the variables accordingly
@@ -177,7 +177,7 @@ public class StopWatch {
 
                 // if the element is null, throw an exception
                 if (s[0] == null) {
-                    throw new IllegalArgumentException();
+                    throw new SWIllegalArgumentException();
                 }
 
                 //assign the element of the array to the variable accordingly
@@ -186,12 +186,12 @@ public class StopWatch {
 
             //if the elements are not between 1-3, throw an exception
             else {
-                throw new IllegalArgumentException();
+                throw new SWIllegalArgumentException();
             }
 
             //if the variables are not within the appropriate range, throw an exception
             if (min < 0 || sec > 59 || sec < 0 || milli < 0 || milli > 999) {
-                throw new IllegalArgumentException();
+                throw new SWIllegalArgumentException();
             }
 
             //if all the tests passed, assign the instance variable to the local variables
@@ -201,7 +201,7 @@ public class StopWatch {
 
         } catch (Exception error) {
             //if any line in the try block fails, catch the error and throw an exception
-            throw new IllegalArgumentException();
+            throw new SWIllegalArgumentException();
         }
     }
 
@@ -238,7 +238,7 @@ public class StopWatch {
      * @param obj object to be checked
      * @return if the object is equal or not
      *****************************************************************/
-    public boolean equals(Object obj) {
+    public boolean equals(Object obj) throws SWIllegalArgumentException{
 
         //if the object (parameter) is not null
         if (obj != null) {
@@ -264,12 +264,12 @@ public class StopWatch {
             } else {
 
                 //if the object passed is not a StopWatch object, throw an exception
-                throw new IllegalArgumentException();
+                throw new SWIllegalArgumentException();
             }
         } else {
 
             //if the object passed is null, throw an exception
-            throw new IllegalArgumentException();
+            throw new SWIllegalArgumentException();
         }
         return false;   //return false if one or more of the variables are not equal
     }
@@ -283,7 +283,7 @@ public class StopWatch {
      * @param s2 second StopWatch object
      * @return if both StopWatch (parameters) are equal or not
      *****************************************************************/
-    public static boolean equals(StopWatch s1, StopWatch s2) {
+    public static boolean equals(StopWatch s1, StopWatch s2) throws SWIllegalArgumentException {
 
         //if both parameters) StopWatches are not null
         if (s1 != null && s2 != null) {
@@ -303,7 +303,7 @@ public class StopWatch {
         } else {
 
             // if one or both (parameter) StopWatches are null, throw an exception
-            throw new IllegalArgumentException();
+            throw new SWIllegalArgumentException();
         }
         return false;   //return false if one or more of the variables are not equal
     }
@@ -317,11 +317,11 @@ public class StopWatch {
      *        -1 if (other) StopWatch is bigger the (this) StopWatch
      *         0 if both StopWatches are equal
      *****************************************************************/
-    public int compareTo(StopWatch other) {
+    public int compareTo(StopWatch other) throws SWIllegalArgumentException{
 
         //if (parameter) StopWatch is null, throw an exception
         if (other == null) {
-            throw new IllegalArgumentException();
+            throw new SWIllegalArgumentException();
         }
 
         //if (this) minutes is bigger than (other) minutes
@@ -368,7 +368,7 @@ public class StopWatch {
      *
      * @param milli milliseconds to be added to the watch
      *****************************************************************/
-    public void add(int milli) {
+    public void add(int milli) throws SWIllegalArgumentException {
 
         //if the StopWatch is not suspended
         if (!suspended) {
@@ -383,7 +383,7 @@ public class StopWatch {
             } else {
 
                 //if the parameter is less than zero
-                throw new IllegalArgumentException();
+                throw new SWIllegalArgumentException();
             }
         }
     }
@@ -394,7 +394,7 @@ public class StopWatch {
      *
      * @param other StopWatch object to be added to the watch
      *****************************************************************/
-    public void add(StopWatch other) {
+    public void add(StopWatch other) throws SWIllegalArgumentException {
 
         //if the StopWatch is not suspended
         if (!suspended) {
@@ -411,7 +411,7 @@ public class StopWatch {
             } else {
 
                 //if the (parameter) StopWatch's variables are not within the appropriate range, throw an exception
-                throw new IllegalArgumentException();
+                throw new SWIllegalArgumentException();
             }
         }
     }
@@ -452,7 +452,7 @@ public class StopWatch {
      *
      * @param milli milliseconds to be subtracted from the watch
      *****************************************************************/
-    public void sub(int milli) {
+    public void sub(int milli) throws SWIllegalArgumentException {
 
         //if the StopWatch is not suspended
         if (!suspended) {
@@ -470,12 +470,12 @@ public class StopWatch {
                 } else {
 
                     //if the (parameter) is zero or less, throw an exception
-                    throw new IllegalArgumentException();
+                    throw new SWIllegalArgumentException();
                 }
             } else {
 
                 //if the (parameter) is greater than the value of the current watch, throw an exception
-                throw new IllegalArgumentException();
+                throw new SWIllegalArgumentException();
             }
         }
     }
@@ -486,7 +486,7 @@ public class StopWatch {
      *
      * @param other StopWatch object to be subtracted from the watch
      *****************************************************************/
-    public void sub(StopWatch other) {
+    public void sub(StopWatch other) throws SWIllegalArgumentException {
 
         //if the StopWatch is not suspended
         if (!suspended) {
@@ -503,7 +503,7 @@ public class StopWatch {
             } else {
 
                 //if the (parameter) StopWatch's variables are not within the appropriate range, throw an exception
-                throw new IllegalArgumentException();
+                throw new SWIllegalArgumentException();
             }
         }
     }
@@ -512,7 +512,7 @@ public class StopWatch {
      * This method decrement the StopWatch by decrementing the
      * milliseconds of the current StopWatch.
      *****************************************************************/
-    public void dec() {
+    public void dec() throws SWIllegalArgumentException {
 
         //if the StopWatch is not suspended
         if (!suspended) {
@@ -548,12 +548,12 @@ public class StopWatch {
                 }
 
                 //if minutes is negative, throw an exception
-                if (this.minutes < 0) throw new IllegalArgumentException();
+                if (this.minutes < 0) throw new SWIllegalArgumentException();
 
             } else {
 
                 //if the current watch doesn't have any time left, throw an exception
-                throw new IllegalArgumentException();
+                throw new SWIllegalArgumentException();
             }
         }
     }
@@ -575,6 +575,7 @@ public class StopWatch {
 
             //if can't create file, throw an exception
             e.printStackTrace();
+
         }
 
         //file is created if code gets to this point
@@ -645,7 +646,7 @@ public class StopWatch {
      *
      * @param minutes the number of minutes to be set
      *****************************************************************/
-    public void setMinutes(int minutes) {
+    public void setMinutes(int minutes) throws SWIllegalArgumentException {
 
         //if StopWatch not suspended
         if (!suspended) {
@@ -656,7 +657,7 @@ public class StopWatch {
             } else {
 
                 //if the parameter is less then zero, throw an exception
-                throw new IllegalArgumentException();
+                throw new SWIllegalArgumentException();
             }
         }
 
@@ -674,7 +675,7 @@ public class StopWatch {
      *
      * @param seconds the number of seconds to be set
      *****************************************************************/
-    public void setSeconds(int seconds) {
+    public void setSeconds(int seconds) throws SWIllegalArgumentException {
 
         //if StopWatch is not suspended
         if (!suspended) {
@@ -685,7 +686,7 @@ public class StopWatch {
             } else {
 
                 //if the parameter is not within the appropriate range, throw an exception
-                throw new IllegalArgumentException();
+                throw new SWIllegalArgumentException();
             }
         }
     }
@@ -703,7 +704,7 @@ public class StopWatch {
      *
      * @param milliseconds the number of milliseconds to be set
      *****************************************************************/
-    public void setMilliseconds(int milliseconds) {
+    public void setMilliseconds(int milliseconds) throws SWIllegalArgumentException {
 
         //if StopWatch is not suspended
         if (!suspended) {
@@ -714,7 +715,7 @@ public class StopWatch {
             } else {
 
                 //if the parameter is not within the appropriate range, throw an exception
-                throw new IllegalArgumentException();
+                throw new SWIllegalArgumentException();
             }
         }
     }
